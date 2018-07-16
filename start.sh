@@ -21,3 +21,4 @@ fi
 
 sleep 1
 varnishlog
+
