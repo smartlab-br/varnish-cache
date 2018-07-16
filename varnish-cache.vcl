@@ -345,7 +345,7 @@ sub vcl_backend_response {
     set beresp.grace = VC_GRACE;
 
     # This is how long Varnish will keep cached content
-    set beresp.ttl = VC_TTL_CACHE;
+    set beresp.ttl = VC_TTL_CACHEs;
 
     # Modify "expires" header - https://www.varnish-cache.org/trac/wiki/VCLExampleSetExpires
     set beresp.http.Expires = "" + (now + beresp.ttl);
@@ -369,8 +369,9 @@ sub vcl_backend_response {
     # cache time respectively.
     # This final setting will normalize cache-control headers for CMSs like Joomla
     # which set max-age=0 even when the CMS' cache is enabled.
-    if (beresp.http.Cache-Control !~ "max-age" || beresp.http.Cache-Control ~ "max-age=0" || beresp.ttl < VC_TTL_BROWSER) {
-        set beresp.http.Cache-Control = "public, max-age=VC_TTL_BROWSER, stale-while-revalidate=(VC_TTL_BROWSER + VC_TTL_BROWSER), stale-if-error=43200";
+    if (beresp.http.Cache-Control !~ "max-age" || beresp.http.Cache-Control ~ "max-age=0" || beresp.ttl < VC_TTL_BROWSERs) {
+        # set beresp.http.Cache-Control = "public, max-age=VC_TTL_BROWSER, stale-while-revalidate=21600, stale-if-error=43200";
+        set beresp.http.Cache-Control = "public, max-age=VC_TTL_BROWSER";
     }
 
     return (deliver);
