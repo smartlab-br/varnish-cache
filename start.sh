@@ -20,5 +20,5 @@ else
 fi
 
 sleep 1
-varnishlog
+varnishlog -b
 
