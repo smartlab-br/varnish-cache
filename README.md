@@ -18,3 +18,5 @@ Docker with Varnish Cache engine under Alpine to be used in Smartlab's Projects
      VC_GRACE        12h
      VC_TTL_CACHE    1h
      VC_TTL_BROWSER  1h
+# Notice
+This repository will be archived soon.
